@@ -1,0 +1,82 @@
+@import "_variables.scss"; // Variables
+
+// Header
+@mixin header {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.8rem 5rem;
+        img {
+            width: 12rem;
+            height: 2rem;
+        }
+    }
+}
+
+// Fonts
+@mixin font-title {
+    h1 {
+        font-family: 'Shrikhand', sans-serif;
+    }
+}
+
+@mixin font-txt {
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
+// CTA
+@mixin cta {
+    .cta {
+        background: $gradient-btn;
+        border: 0;
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        padding: 1rem 1.1rem;
+        color: white;
+        text-align: center;
+    }
+}
+
+// Heart
+
+// Footer
+@mixin footer {
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.3rem 1.5rem;
+        gap: 1rem;
+        background-color: $grey;
+        p { // Logo blanc
+            display: block;
+            font-family: $font-title;
+            font-size: 1.125rem;
+            color: white;     
+            padding: 0;
+            margin: 0;       
+        }
+        ul { // Liste
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+            li i { // Icones
+                    width: 0.7rem;
+                    height: 0.8rem;
+                    font-size: 13px;
+                    margin-right: 0.7rem;
+                }
+        }
+    }
+}

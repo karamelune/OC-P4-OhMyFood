@@ -1,0 +1,36 @@
+@import "partials/_variables.scss"; // Variables
+@import "partials/_mixins.scss"; // Mixins
+
+@include font-txt; // Roboto, sans-serif
+@include font-title; // Shrikhand, sans-serif
+@include cta; // CTA common styles
+
+body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}
+
+// Header
+@include header; // Header common styles
+
+// Location
+.location {
+    display: flex;
+    width: 23rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    &__search {
+        font-size: 1rem;
+        font-weight: 500;
+        color: $grey;
+    }
+}
+
+// Footer
+@include footer; // Footer common styles
