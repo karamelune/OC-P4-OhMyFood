@@ -6,10 +6,12 @@ $green-font: #008766;
 $blue: #89C8FA;
 $blue2: #003A68;
 $grey: #353535;
+$light-grey: #EAEAEA;
+$light-grey2: #F6F6F6;
 
 // Dégradéds
-$gradient-btn: linear-gradient(193deg, $primary-color -11.44%, $secondary-color 123.93%);
+$gradient-btn: linear-gradient($secondary-color, $primary-color);
 
 // Fonts
-$font-title: 'Shrikhand', sans-serif;
+$font-title: 'Shrikhand';
 $font-txt: 'Roboto', sans-serif;

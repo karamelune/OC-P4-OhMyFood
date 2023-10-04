@@ -1,28 +1,66 @@
 * {
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
-
-h1 {
-  font-family: "Shrikhand", sans-serif;
+* a {
+  text-decoration: none;
 }
-
-.cta {
-  background: linear-gradient(193deg, #9356DC -11.44%, #FF79DA 123.93%);
-  border: 0;
-  border-radius: 1.5rem;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  padding: 1rem 1.1rem;
-  color: white;
-  text-align: center;
+* h1 {
+  font-family: "Shrikhand";
 }
 
 body {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   justify-content: center;
   text-align: center;
   margin: 0;
+  width: 100%;
+}
+
+.cta {
+  background: linear-gradient(#FF79DA, #9356DC);
+  border: 0;
+  border-radius: 1.5rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  height: 3.125rem;
+  width: 13.625rem;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  transition: background 300ms ease-in-out;
+}
+.cta:hover {
+  background: linear-gradient(#ff93e1, #a16be0);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+.heart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-right: 1.5rem;
+}
+.heart--empty {
+  position: absolute;
+  color: black;
+}
+.heart--full {
+  position: absolute;
+  opacity: 0;
+  background: linear-gradient(#FF79DA, #9356DC);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 400ms;
+}
+.heart:hover .heart--empty {
+  opacity: 0;
+}
+.heart:hover .heart--full {
+  opacity: 1;
 }
 
 header {
@@ -30,43 +68,208 @@ header {
   justify-content: center;
   align-items: center;
   padding: 0.8rem 5rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
-header img {
-  width: 12rem;
-  height: 2rem;
+header h1 {
+  font-family: "Shrikhand";
+  font-size: 1.875rem;
+  font-weight: 400;
+  display: block;
+  margin: 0;
 }
 
 .location {
   display: flex;
-  width: 23rem;
+  background-color: #EAEAEA;
+  width: 100%;
   height: 3rem;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
+.location__btn {
+  border: 0;
+  background-color: #EAEAEA;
+}
+.location__btn i {
+  font-size: 1rem;
+}
 .location__search {
   font-size: 1rem;
   font-weight: 500;
   color: #353535;
+  background-color: #EAEAEA;
+  width: 9rem;
+  border: 0;
 }
 
-footer {
+.explorer__section {
+  background-color: #F6F6F6;
+}
+.explorer__section--title {
+  margin: 2.5rem 3rem 0 3rem;
+}
+.explorer__section p {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: #353535;
+  margin: 0.5rem 1.5rem 1.5rem 1.5rem;
+}
+.explorer__section .cta {
+  margin: 0 5rem 3.5rem 5rem;
+}
+
+.fonctionnement__section--title {
+  text-align: left;
+  margin: 3rem 0 1.25rem 1.25rem;
+}
+.fonctionnement__section .fonctionnement {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4.25rem;
+}
+.fonctionnement__section .fonctionnement__etape {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 1.25rem;
+  height: 4.5rem;
+  background-color: #F6F6F6;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+  margin: 0 1.2rem 0 2rem;
+}
+.fonctionnement__section .fonctionnement__etape--number {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #9356DC;
+  color: white;
+  font-size: 0.8rem;
+  position: absolute;
+  left: 1.25rem;
+}
+.fonctionnement__section .fonctionnement__etape--icon {
+  font-size: 1.2rem;
+  color: #7e7e7e;
+  margin-left: 2rem;
+}
+.fonctionnement__section .fonctionnement__etape:nth-child(3) i {
+  color: #9356DC;
+}
+.fonctionnement__section .fonctionnement__etape--txt {
+  font-weight: 500;
+  margin-left: 1.6rem;
+}
+
+.restaurants__section {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0rem 4rem 0rem;
+  gap: 1rem;
+  align-items: center;
+  background-color: #F6F6F6;
+}
+.restaurants__section--title {
+  margin: 2rem 0 0.25rem 1.25rem;
+  align-self: flex-start;
+}
+.restaurants__section .restaurants__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+  width: 95%;
+}
+.restaurants__section .restaurants__container a {
+  width: 100%;
+}
+.restaurants__section .restaurants__container a .card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  background-color: white;
+}
+.restaurants__section .restaurants__container a .card__imgcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  width: 100%;
+  overflow: hidden;
+}
+.restaurants__section .restaurants__container a .card__imgcontainer img {
+  object-fit: cover;
+  object-position: 50% 80%;
+  height: 100%;
+  width: 100%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.restaurants__section .restaurants__container a .card .nouveau {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #008766;
+  width: 5rem;
+  height: 1.8125rem;
+  border-radius: 0.125rem;
+  background-color: #99E2D0;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  right: 1.5rem;
+}
+.restaurants__section .restaurants__container a .card__content {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  color: black;
+  padding: 1rem 1rem 0.7rem 0.8rem;
+}
+.restaurants__section .restaurants__container a .card__content--txt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.restaurants__section .restaurants__container a .card__content--title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+}
+.restaurants__section .restaurants__container a .card__content--location {
+  font-weight: 300;
+  margin: 0;
+}
+.restaurants__section .restaurants__container a:nth-of-type(2) img {
+  object-position: 50% 60%;
+}
+
+.footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 1.3rem 1.5rem;
-  gap: 1rem;
+  gap: 0.5rem;
+  width: 100%;
   background-color: #353535;
 }
-footer p {
-  display: block;
-  font-family: "Shrikhand", sans-serif;
+.footer__title h1 {
+  font-family: "Shrikhand";
   font-size: 1.125rem;
+  font-weight: 400;
   color: white;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0.5rem 0;
 }
-footer ul {
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__container--liens {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,16 +277,160 @@ footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
 }
-footer ul a {
+.footer__container--liens__strong {
+  font-weight: 500;
+}
+.footer__container--liens a {
   color: white;
-  text-decoration: none;
 }
-footer ul li i {
+.footer__container--liens a i {
   width: 0.7rem;
   height: 0.8rem;
   font-size: 13px;
   margin-right: 0.7rem;
+}
+
+/****** Media queries ***********/
+/* Medium devices */
+@media (min-width: 768px) {
+  .explorer__section--title {
+    font-size: 2rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+  .explorer__section .cta {
+    margin: 0 5rem 2rem 5rem;
+  }
+  .fonctionnement__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.25rem 3rem;
+    align-self: flex-start;
+  }
+  .fonctionnement__section .fonctionnement {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+  .fonctionnement__section .fonctionnement__etape {
+    position: relative;
+    margin: 0;
+    font-size: 0.9rem;
+    width: 35%;
+  }
+  .fonctionnement__section .fonctionnement__etape--number {
+    position: absolute;
+    top: 50%;
+    left: -0.75rem;
+    transform: translateY(-50%);
+  }
+  .fonctionnement__section .fonctionnement__etape--txt {
+    margin-left: 0.7rem;
+    margin-right: 0.6rem;
+  }
+  .restaurants__section--title {
+    margin: 2rem 0 0.25rem 3rem;
+  }
+  .restaurants__section .restaurants__container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+  .restaurants__section .restaurants__container a {
+    width: 48%;
+  }
+  .restaurants__section .restaurants__container a .card {
+    position: relative;
+  }
+  .restaurants__section .restaurants__container a .card .nouveau {
+    right: 1rem;
+  }
+  .footer {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding: 3rem 3rem 1.8rem 0;
+    gap: 4rem;
+  }
+  .footer__title h1 {
+    margin: 0;
+  }
+  .footer__container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .footer__container--liens {
+    flex-direction: row;
+    gap: 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+/* Laptop */
+@media (min-width: 1024px) {
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.5rem 5rem;
+  }
+  .fonctionnement__section .fonctionnement {
+    width: 85%;
+  }
+  .fonctionnement__section .fonctionnement__etape {
+    font-size: 1rem;
+    padding: 0 1.8rem 0 0;
+  }
+  .fonctionnement__section .fonctionnement__etape--txt {
+    margin-left: 1rem;
+  }
+  .restaurants__section {
+    padding: 1rem 0rem 2rem 0rem;
+  }
+  .restaurants__section--title {
+    margin: 1rem 0 0.25rem 5rem;
+  }
+  .restaurants__section .restaurants__container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 85%;
+    gap: 2.5rem 0;
+  }
+  .restaurants__section .restaurants__container a {
+    width: 47%;
+  }
+  .restaurants__section .restaurants__container a .card {
+    position: relative;
+  }
+  .restaurants__section .restaurants__container a .card .nouveau {
+    right: 1rem;
+  }
+  .footer__container--liens {
+    font-size: 1rem;
+  }
+}
+/* Laptop */
+@media (min-width: 1440px) {
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.5rem 12rem;
+  }
+  .fonctionnement__section .fonctionnement {
+    width: 75%;
+    gap: 2rem;
+  }
+  .restaurants__section--title {
+    margin: 1rem 0 0.25rem 12rem;
+  }
+  .restaurants__section .restaurants__container {
+    width: 75%;
+  }
+  .restaurants__section .restaurants__container a {
+    width: 46%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
