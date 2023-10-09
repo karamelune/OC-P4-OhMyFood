@@ -89,24 +89,26 @@ img {
                     flex: 1 0 0;
                     &--plat, &--desc { // Styles communs
                         margin: 0;
-                        flex-shrink: 0;
+                        text-align: left;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         white-space: nowrap;
-                    }
+                        width: calc(98%); // Largeur avant overflow
+                    }                    
                     &--plat {
-                        font-size: 1.125rem;
+                        font-size: 0.98rem;
                         font-weight: 500;
                     }
                     &--desc {
-                        font-size: 0.9rem;
-                        font-weight: 300;
+                        font-size: 0.77rem;
+                        font-weight: 300;  
                     }
                 }
                 &__price {
                     color: $grey;
                     font-size: 0.9rem;
                     font-weight: 700;
+                    flex-shrink: 0;
                 }
             }
         }
@@ -119,9 +121,17 @@ img {
 // Footer
 @include footer; // Footer common styles
 
-/****** Media queries ***********/
-/* Medium devices */
+/*************** Media queries *****************/
+/******* Medium devices ********/
 @media (min-width: 768px) {
+
+    // Menu
+    .menu .plats .card-content__txt--plat {
+        font-size: 1.2rem;
+}
+    .menu .plats .card-content__txt--desc {
+        font-size: 1rem;
+}
 
     // Footer
     .footer {
@@ -146,7 +156,7 @@ img {
     }
 }
 
-/* Medium devices */
+/********** Laptop ************/
 @media (min-width: 1024px) {
     // Image du restaurant
     img {

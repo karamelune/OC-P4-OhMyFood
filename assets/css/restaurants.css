@@ -170,23 +170,25 @@ img {
 }
 .menu .plats .card-content__txt--plat, .menu .plats .card-content__txt--desc {
   margin: 0;
-  flex-shrink: 0;
+  text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 98%;
 }
 .menu .plats .card-content__txt--plat {
-  font-size: 1.125rem;
+  font-size: 0.98rem;
   font-weight: 500;
 }
 .menu .plats .card-content__txt--desc {
-  font-size: 0.9rem;
+  font-size: 0.77rem;
   font-weight: 300;
 }
 .menu .plats .card-content__price {
   color: #353535;
   font-size: 0.9rem;
   font-weight: 700;
+  flex-shrink: 0;
 }
 .menu .cta {
   margin: 2.5rem 0;
@@ -238,9 +240,15 @@ img {
   margin-right: 0.7rem;
 }
 
-/****** Media queries ***********/
-/* Medium devices */
+/*************** Media queries *****************/
+/******* Medium devices ********/
 @media (min-width: 768px) {
+  .menu .plats .card-content__txt--plat {
+    font-size: 1.2rem;
+  }
+  .menu .plats .card-content__txt--desc {
+    font-size: 1rem;
+  }
   .footer {
     flex-direction: row-reverse;
     align-items: flex-end;
@@ -260,7 +268,7 @@ img {
     font-size: 0.8rem;
   }
 }
-/* Medium devices */
+/********** Laptop ************/
 @media (min-width: 1024px) {
   img {
     height: 25rem;
