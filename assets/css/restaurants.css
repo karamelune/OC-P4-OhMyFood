@@ -1,3 +1,28 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -10,27 +35,44 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   margin: 0;
   width: 100%;
 }
 
+header,
+.location,
+.explorer__section,
+.fonctionnement__section,
+.restaurants__section,
+footer {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(#FF79DA, #9356DC);
   border: 0;
   border-radius: 1.5rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  height: 3.125rem;
-  width: 13.625rem;
+  padding: 0.9rem 1.8rem;
+  min-width: 11rem;
   color: white;
   text-align: center;
   font-size: 1rem;
-  transition: background 300ms ease-in-out;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
 }
 .cta:hover {
+  transform: scale(1.02);
   background: linear-gradient(#ff93e1, #a16be0);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
 }
@@ -63,6 +105,31 @@ body {
   opacity: 1;
 }
 
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgba(246, 246, 246, 0.8);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in forwards 2s;
+}
+.loader__animation {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(147, 86, 220, 0.3);
+  border-radius: 50%;
+  border-top-color: #9356DC;
+  animation: spin 1s ease-in-out infinite, fadeOut 0.5s ease-in forwards 2s;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -90,11 +157,22 @@ header {
   padding: 0.8rem 5rem 0.8rem 1.2rem;
 }
 
+header,
+footer {
+  max-width: 100%;
+}
+
 img {
   width: 100%;
   height: 17rem;
   object-fit: cover;
   object-position: 50% 70%;
+}
+@media (min-width: 1024px) {
+  img {
+    height: 20rem;
+    object-position: 50% 60%;
+  }
 }
 
 .menu {
@@ -115,14 +193,20 @@ img {
 }
 .menu__title {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
   align-self: center;
   padding: 2rem 0 0 0.5rem;
 }
-.menu__title h1 {
+@media (min-width: 634px) {
+  .menu__title {
+    gap: 3rem;
+  }
+}
+.menu__title h2 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 400;
+  font-family: "Shrikhand";
 }
 .menu .plats {
   display: flex;
@@ -137,6 +221,7 @@ img {
   font-weight: 300;
   text-align: left;
   text-transform: uppercase;
+  /*** Animation titres ***/
 }
 .menu .plats__title::after {
   content: "";
@@ -146,49 +231,152 @@ img {
   background-color: #99E2D0;
   margin-top: 0.5rem;
 }
+.menu .plats__title:nth-child(1) {
+  animation: fadeInFromLeft 0.5s ease-out -0.1s backwards;
+}
+.menu .plats__title:nth-child(2) {
+  animation: fadeInFromLeft 0.5s ease-out 0s backwards;
+}
+.menu .plats__title:nth-child(3) {
+  animation: fadeInFromLeft 0.5s ease-out 0.1s backwards;
+}
+.menu .plats__title:nth-child(4) {
+  animation: fadeInFromLeft 0.5s ease-out 0.2s backwards;
+}
+.menu .plats__title:nth-child(5) {
+  animation: fadeInFromLeft 0.5s ease-out 0.3s backwards;
+}
+.menu .plats__title:nth-child(6) {
+  animation: fadeInFromLeft 0.5s ease-out 0.4s backwards;
+}
+.menu .plats__title:nth-child(7) {
+  animation: fadeInFromLeft 0.5s ease-out 0.5s backwards;
+}
+.menu .plats__title:nth-child(8) {
+  animation: fadeInFromLeft 0.5s ease-out 0.6s backwards;
+}
+.menu .plats__title:nth-child(9) {
+  animation: fadeInFromLeft 0.5s ease-out 0.7s backwards;
+}
+.menu .plats__title:nth-child(10) {
+  animation: fadeInFromLeft 0.5s ease-out 0.8s backwards;
+}
+.menu .plats__title:nth-child(11) {
+  animation: fadeInFromLeft 0.5s ease-out 0.9s backwards;
+}
+.menu .plats__title:nth-child(12) {
+  animation: fadeInFromLeft 0.5s ease-out 1s backwards;
+}
+.menu .plats__title:nth-child(13) {
+  animation: fadeInFromLeft 0.5s ease-out 1.1s backwards;
+}
 .menu .plats .card {
   display: flex;
-  align-items: center;
+  height: 4.3rem;
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /*** Animations plats ***/
 }
 .menu .plats .card-content {
   display: flex;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
   padding: 0.9rem;
   gap: 0.3rem;
-  flex: 1 0 0;
 }
 .menu .plats .card-content__txt {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   gap: 0.3rem;
-  flex: 1 0 0;
+  min-width: 0;
 }
 .menu .plats .card-content__txt--plat, .menu .plats .card-content__txt--desc {
   margin: 0;
-  text-align: left;
+  display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 98%;
 }
 .menu .plats .card-content__txt--plat {
-  font-size: 0.98rem;
+  font-size: 15px;
   font-weight: 500;
 }
+@media (min-width: 634px) {
+  .menu .plats .card-content__txt--plat {
+    font-size: 18px;
+  }
+}
 .menu .plats .card-content__txt--desc {
-  font-size: 0.77rem;
+  font-size: 12px;
   font-weight: 300;
+}
+@media (min-width: 634px) {
+  .menu .plats .card-content__txt--desc {
+    font-size: 15px;
+  }
 }
 .menu .plats .card-content__price {
   color: #353535;
-  font-size: 0.9rem;
+  align-self: flex-end;
+  font-size: 15px;
   font-weight: 700;
-  flex-shrink: 0;
+}
+.menu .plats .card:nth-child(2) {
+  animation: fadeInFromLeft 0.5s ease-out 0s backwards;
+}
+.menu .plats .card:nth-child(3) {
+  animation: fadeInFromLeft 0.5s ease-out 0.1s backwards;
+}
+.menu .plats .card:nth-child(4) {
+  animation: fadeInFromLeft 0.5s ease-out 0.2s backwards;
+}
+.menu .plats .card:nth-child(5) {
+  animation: fadeInFromLeft 0.5s ease-out 0.3s backwards;
+}
+.menu .plats .card:nth-child(6) {
+  animation: fadeInFromLeft 0.5s ease-out 0.4s backwards;
+}
+.menu .plats .card:nth-child(7) {
+  animation: fadeInFromLeft 0.5s ease-out 0.5s backwards;
+}
+.menu .plats .card:nth-child(8) {
+  animation: fadeInFromLeft 0.5s ease-out 0.6s backwards;
+}
+.menu .plats .card:nth-child(9) {
+  animation: fadeInFromLeft 0.5s ease-out 0.7s backwards;
+}
+.menu .plats .card:nth-child(10) {
+  animation: fadeInFromLeft 0.5s ease-out 0.8s backwards;
+}
+.menu .plats .card:nth-child(11) {
+  animation: fadeInFromLeft 0.5s ease-out 0.9s backwards;
+}
+.menu .plats .card:nth-child(12) {
+  animation: fadeInFromLeft 0.5s ease-out 1s backwards;
+}
+.menu .plats .card:nth-child(13) {
+  animation: fadeInFromLeft 0.5s ease-out 1.1s backwards;
+}
+.menu .plats .card-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  margin-right: -70px;
+  overflow: hidden;
+  background-color: #99E2D0;
+  transition: margin-right 0.2s ease-in-out;
+}
+.menu .plats .card-check i {
+  color: white;
+  font-size: 1.3rem;
+}
+.menu .plats .card:hover .card-check {
+  margin-right: 0;
 }
 .menu .cta {
   margin: 2.5rem 0;
@@ -203,6 +391,14 @@ img {
   width: 100%;
   background-color: #353535;
 }
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding: 3rem 3rem 1.8rem 0;
+    gap: 4rem;
+  }
+}
 .footer__title h1 {
   font-family: "Shrikhand";
   font-size: 1.125rem;
@@ -211,10 +407,21 @@ img {
   padding: 0;
   margin: 0 0 0.5rem 0;
 }
+@media (min-width: 768px) {
+  .footer__title h1 {
+    margin: 0;
+  }
+}
 .footer__container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .footer__container {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 .footer__container--liens {
   display: flex;
@@ -227,6 +434,13 @@ img {
   font-size: 1rem;
   font-weight: 400;
 }
+@media (min-width: 768px) {
+  .footer__container--liens {
+    flex-direction: row;
+    gap: 0.7rem;
+    font-size: 0.8rem;
+  }
+}
 .footer__container--liens__strong {
   font-weight: 500;
 }
@@ -238,42 +452,6 @@ img {
   height: 0.8rem;
   font-size: 13px;
   margin-right: 0.7rem;
-}
-
-/*************** Media queries *****************/
-/******* Medium devices ********/
-@media (min-width: 768px) {
-  .menu .plats .card-content__txt--plat {
-    font-size: 1.2rem;
-  }
-  .menu .plats .card-content__txt--desc {
-    font-size: 1rem;
-  }
-  .footer {
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    padding: 3rem 3rem 1.8rem 0;
-    gap: 4rem;
-  }
-  .footer__title h1 {
-    margin: 0;
-  }
-  .footer__container {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  .footer__container--liens {
-    flex-direction: row;
-    gap: 0.7rem;
-    font-size: 0.8rem;
-  }
-}
-/********** Laptop ************/
-@media (min-width: 1024px) {
-  img {
-    height: 25rem;
-    object-position: 50% 60%;
-  }
 }
 
 /*# sourceMappingURL=restaurants.css.map */

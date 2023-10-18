@@ -1,3 +1,28 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -10,27 +35,44 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   margin: 0;
   width: 100%;
 }
 
+header,
+.location,
+.explorer__section,
+.fonctionnement__section,
+.restaurants__section,
+footer {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(#FF79DA, #9356DC);
   border: 0;
   border-radius: 1.5rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  height: 3.125rem;
-  width: 13.625rem;
+  padding: 0.9rem 1.8rem;
+  min-width: 11rem;
   color: white;
   text-align: center;
   font-size: 1rem;
-  transition: background 300ms ease-in-out;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
 }
 .cta:hover {
+  transform: scale(1.02);
   background: linear-gradient(#ff93e1, #a16be0);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
 }
@@ -61,6 +103,31 @@ body {
 }
 .heart:hover .heart--full {
   opacity: 1;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgba(246, 246, 246, 0.8);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in forwards 2s;
+}
+.loader__animation {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(147, 86, 220, 0.3);
+  border-radius: 50%;
+  border-top-color: #9356DC;
+  animation: spin 1s ease-in-out infinite, fadeOut 0.5s ease-in forwards 2s;
 }
 
 header {
@@ -112,10 +179,18 @@ header a:visited {
 }
 
 .explorer__section {
+  text-align: center;
   background-color: #F6F6F6;
 }
 .explorer__section--title {
-  margin: 2.5rem 3rem 0 3rem;
+  margin: 0 0.5rem;
+  padding-top: 2rem;
+}
+@media (min-width: 768px) {
+  .explorer__section--title {
+    font-size: 2rem;
+    margin: 2rem 0 1.5rem 0;
+  }
 }
 .explorer__section p {
   font-size: 1.125rem;
@@ -124,18 +199,66 @@ header a:visited {
   margin: 0.5rem 1.5rem 1.5rem 1.5rem;
 }
 .explorer__section .cta {
-  margin: 0 5rem 3.5rem 5rem;
+  margin: 0 0 3.5rem 0;
+}
+@media (min-width: 768px) {
+  .explorer__section .cta {
+    margin: 0 5rem 2rem 5rem;
+  }
 }
 
+@media (min-width: 768px) {
+  .fonctionnement__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .fonctionnement__section--title {
   text-align: left;
   margin: 3rem 0 1.25rem 1.25rem;
+}
+@media (min-width: 768px) {
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.25rem 3rem;
+    align-self: flex-start;
+  }
+}
+@media (min-width: 1024px) {
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.5rem 5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .fonctionnement__section--title {
+    margin: 3rem 0 1.5rem 12rem;
+  }
 }
 .fonctionnement__section .fonctionnement {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4.25rem;
+}
+@media (min-width: 768px) {
+  .fonctionnement__section .fonctionnement {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .fonctionnement__section .fonctionnement {
+    width: 85%;
+  }
+}
+@media (min-width: 1440px) {
+  .fonctionnement__section .fonctionnement {
+    width: 75%;
+    gap: 2rem;
+  }
 }
 .fonctionnement__section .fonctionnement__etape {
   display: flex;
@@ -146,6 +269,20 @@ header a:visited {
   background-color: #F6F6F6;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
   margin: 0 1.2rem 0 2rem;
+}
+@media (min-width: 768px) {
+  .fonctionnement__section .fonctionnement__etape {
+    position: relative;
+    margin: 0;
+    font-size: 0.9rem;
+    width: 35%;
+  }
+}
+@media (min-width: 1024px) {
+  .fonctionnement__section .fonctionnement__etape {
+    font-size: 1rem;
+    padding: 0 1.8rem 0 0;
+  }
 }
 .fonctionnement__section .fonctionnement__etape--number {
   width: 1.5rem;
@@ -160,10 +297,23 @@ header a:visited {
   position: absolute;
   left: 1.25rem;
 }
+@media (min-width: 768px) {
+  .fonctionnement__section .fonctionnement__etape--number {
+    position: absolute;
+    top: 50%;
+    left: -0.75rem;
+    transform: translateY(-50%);
+  }
+}
 .fonctionnement__section .fonctionnement__etape--icon {
   font-size: 1.2rem;
   color: #7e7e7e;
   margin-left: 2rem;
+}
+@media (min-width: 768px) {
+  .fonctionnement__section .fonctionnement__etape--icon {
+    margin-left: 1.5rem;
+  }
 }
 .fonctionnement__section .fonctionnement__etape:nth-child(3) i {
   color: #9356DC;
@@ -171,6 +321,17 @@ header a:visited {
 .fonctionnement__section .fonctionnement__etape--txt {
   font-weight: 500;
   margin-left: 1.6rem;
+}
+@media (min-width: 768px) {
+  .fonctionnement__section .fonctionnement__etape--txt {
+    margin-left: 0.6rem;
+    margin-right: 0.3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .fonctionnement__section .fonctionnement__etape--txt {
+    margin-left: 1rem;
+  }
 }
 
 .restaurants__section {
@@ -181,24 +342,73 @@ header a:visited {
   align-items: center;
   background-color: #F6F6F6;
 }
+@media (min-width: 768px) {
+  .restaurants__section {
+    padding: 1rem 0rem 2rem 0rem;
+  }
+}
 .restaurants__section--title {
   margin: 2rem 0 0.25rem 1.25rem;
   align-self: flex-start;
 }
+@media (min-width: 768px) {
+  .restaurants__section--title {
+    margin: 2rem 0 0.25rem 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .restaurants__section--title {
+    margin: 1rem 0 0.25rem 5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .restaurants__section--title {
+    margin: 1rem 0 0.25rem 12rem;
+  }
+}
 .restaurants__section .restaurants__container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem 0;
   width: 95%;
 }
+@media (min-width: 768px) {
+  .restaurants__section .restaurants__container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+  }
+}
+@media (min-width: 1024px) {
+  .restaurants__section .restaurants__container {
+    width: 85%;
+    gap: 2.5rem 0;
+  }
+}
+@media (min-width: 1440px) {
+  .restaurants__section .restaurants__container {
+    width: 75%;
+  }
+}
 .restaurants__section .restaurants__container a {
   width: 100%;
+}
+@media (min-width: 768px) {
+  .restaurants__section .restaurants__container a {
+    width: 46%;
+  }
 }
 .restaurants__section .restaurants__container a .card {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   background-color: white;
+}
+@media (min-width: 768px) {
+  .restaurants__section .restaurants__container a .card {
+    position: relative;
+  }
 }
 .restaurants__section .restaurants__container a .card__imgcontainer {
   display: flex;
@@ -228,6 +438,11 @@ header a:visited {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   position: absolute;
   right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .restaurants__section .restaurants__container a .card .nouveau {
+    right: 1rem;
+  }
 }
 .restaurants__section .restaurants__container a .card__content {
   display: flex;
@@ -263,6 +478,14 @@ header a:visited {
   width: 100%;
   background-color: #353535;
 }
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding: 3rem 3rem 1.8rem 0;
+    gap: 4rem;
+  }
+}
 .footer__title h1 {
   font-family: "Shrikhand";
   font-size: 1.125rem;
@@ -271,10 +494,21 @@ header a:visited {
   padding: 0;
   margin: 0 0 0.5rem 0;
 }
+@media (min-width: 768px) {
+  .footer__title h1 {
+    margin: 0;
+  }
+}
 .footer__container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .footer__container {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 .footer__container--liens {
   display: flex;
@@ -287,6 +521,13 @@ header a:visited {
   font-size: 1rem;
   font-weight: 400;
 }
+@media (min-width: 768px) {
+  .footer__container--liens {
+    flex-direction: row;
+    gap: 0.7rem;
+    font-size: 0.8rem;
+  }
+}
 .footer__container--liens__strong {
   font-weight: 500;
 }
@@ -298,146 +539,6 @@ header a:visited {
   height: 0.8rem;
   font-size: 13px;
   margin-right: 0.7rem;
-}
-
-/****** Media queries ***********/
-/* Medium devices */
-@media (min-width: 768px) {
-  .explorer__section--title {
-    font-size: 2rem;
-    margin: 2rem 0 1.5rem 0;
-  }
-  .explorer__section .cta {
-    margin: 0 5rem 2rem 5rem;
-  }
-  .fonctionnement__section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .fonctionnement__section--title {
-    margin: 3rem 0 1.25rem 3rem;
-    align-self: flex-start;
-  }
-  .fonctionnement__section .fonctionnement {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    margin-bottom: 3rem;
-  }
-  .fonctionnement__section .fonctionnement__etape {
-    position: relative;
-    margin: 0;
-    font-size: 0.9rem;
-    width: 35%;
-  }
-  .fonctionnement__section .fonctionnement__etape--number {
-    position: absolute;
-    top: 50%;
-    left: -0.75rem;
-    transform: translateY(-50%);
-  }
-  .fonctionnement__section .fonctionnement__etape--txt {
-    margin-left: 0.7rem;
-    margin-right: 0.6rem;
-  }
-  .restaurants__section--title {
-    margin: 2rem 0 0.25rem 3rem;
-  }
-  .restaurants__section .restaurants__container {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 90%;
-  }
-  .restaurants__section .restaurants__container a {
-    width: 48%;
-  }
-  .restaurants__section .restaurants__container a .card {
-    position: relative;
-  }
-  .restaurants__section .restaurants__container a .card .nouveau {
-    right: 1rem;
-  }
-  .footer {
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    padding: 3rem 3rem 1.8rem 0;
-    gap: 4rem;
-  }
-  .footer__title h1 {
-    margin: 0;
-  }
-  .footer__container {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  .footer__container--liens {
-    flex-direction: row;
-    gap: 0.7rem;
-    font-size: 0.8rem;
-  }
-}
-/* Laptop */
-@media (min-width: 1024px) {
-  .fonctionnement__section--title {
-    margin: 3rem 0 1.5rem 5rem;
-  }
-  .fonctionnement__section .fonctionnement {
-    width: 85%;
-  }
-  .fonctionnement__section .fonctionnement__etape {
-    font-size: 1rem;
-    padding: 0 1.8rem 0 0;
-  }
-  .fonctionnement__section .fonctionnement__etape--txt {
-    margin-left: 1rem;
-  }
-  .restaurants__section {
-    padding: 1rem 0rem 2rem 0rem;
-  }
-  .restaurants__section--title {
-    margin: 1rem 0 0.25rem 5rem;
-  }
-  .restaurants__section .restaurants__container {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 85%;
-    gap: 2.5rem 0;
-  }
-  .restaurants__section .restaurants__container a {
-    width: 47%;
-  }
-  .restaurants__section .restaurants__container a .card {
-    position: relative;
-  }
-  .restaurants__section .restaurants__container a .card .nouveau {
-    right: 1rem;
-  }
-  .footer__container--liens {
-    font-size: 1rem;
-  }
-}
-/* Laptop */
-@media (min-width: 1440px) {
-  .fonctionnement__section--title {
-    margin: 3rem 0 1.5rem 12rem;
-  }
-  .fonctionnement__section .fonctionnement {
-    width: 75%;
-    gap: 2rem;
-  }
-  .restaurants__section--title {
-    margin: 1rem 0 0.25rem 12rem;
-  }
-  .restaurants__section .restaurants__container {
-    width: 75%;
-  }
-  .restaurants__section .restaurants__container a {
-    width: 46%;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,13 @@
 @import "partials/_variables.scss"; // Variables
 @import "partials/_mixins.scss"; // Mixins
+@import "partials/_keyframes.scss"; // Keyframes
 
 @include common; // Common styles
 @include cta; // CTA common styles
 @include heart; // Heart common styles
+
+// Loader
+@include loader; // Loader common styles
 
 // Header
 @include header; // Header common styles
@@ -36,9 +40,15 @@
 
 // Explorer nos restaurants
 .explorer__section {
+    text-align: center;
     background-color: $light-grey2;
     &--title {
-        margin: 2.5rem 3rem 0 3rem;
+        margin: 0 0.5rem;
+        padding-top: 2rem;
+        @media (min-width: 768px) {
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem 0;
+        }
     }
     p {
         font-size: 1.125rem;
@@ -47,21 +57,53 @@
         margin: 0.5rem 1.5rem 1.5rem 1.5rem;
     }
     .cta {
-        margin: 0 5rem 3.5rem 5rem;
+        margin: 0 0 3.5rem 0;
+        @media (min-width: 768px) {
+            margin: 0 5rem 2rem 5rem;
+        }
     }
 }
 
 // Fonctionnement
 .fonctionnement__section {
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     &--title {
         text-align: left;
         margin: 3rem 0 1.25rem 1.25rem;
+        @media (min-width: 768px) {
+            margin: 3rem 0 1.25rem 3rem;
+            align-self: flex-start;
+        }
+        @media (min-width: 1024px) {
+            margin: 3rem 0 1.5rem 5rem;
+        }
+        @media (min-width: 1440px) {
+            margin: 3rem 0 1.5rem 12rem;
+        }
     }
     .fonctionnement {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
         margin-bottom: 4.25rem;
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            margin-bottom: 3rem;
+        }
+        @media (min-width: 1024px) {
+            width: 85%;
+        }
+        @media (min-width: 1440px) {
+            width: 75%;
+            gap: 2rem;
+        }
         &__etape {
             display: flex;
             justify-content: flex-start;
@@ -71,6 +113,16 @@
             background-color: $light-grey2;
             box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
             margin: 0 1.2rem 0 2rem;
+            @media (min-width: 768px) {
+                position: relative;
+                margin: 0;
+                font-size: 0.9rem;
+                width: 35%;
+            }
+            @media (min-width: 1024px) {
+                font-size: 1rem;
+                padding: 0 1.8rem 0 0;
+            }
             &--number {
                 width: 1.5rem;
                 height: 1.5rem;
@@ -83,18 +135,34 @@
                 font-size: 0.8rem;
                 position: absolute;
                 left: 1.25rem;
+                @media (min-width: 768px) {
+                    position: absolute;
+                    top: 50%;
+                    left: -0.75rem;
+                    transform: translateY(-50%);
+                }
             }
             &--icon {
                 font-size: 1.2rem;
                 color: darken($light-grey2 , 47);
                 margin-left: 2rem;
+                @media (min-width: 768px) {
+                    margin-left: 1.5rem;
+                }
             }
             &:nth-child(3) i { // 3ème icône
                 color: $primary-color;
             }
             &--txt {
                 font-weight: 500;
-                margin-left: 1.6rem
+                margin-left: 1.6rem;
+                @media (min-width: 768px) {
+                    margin-left: 0.6rem;
+                    margin-right: 0.3rem;
+                }
+                @media (min-width: 1024px) {
+                    margin-left: 1rem;
+                }
             }
         }
     }
@@ -108,22 +176,53 @@
     gap: 1rem;
     align-items: center;
     background-color: $light-grey2;
+    @media (min-width: 768px) {
+        padding: 1rem 0rem 2rem 0rem;
+    }
     &--title {
         margin: 2rem 0 0.25rem 1.25rem;
         align-self: flex-start;
+        @media (min-width: 768px) {
+            margin: 2rem 0 0.25rem 3rem;
+        }
+        @media (min-width: 1024px) {
+            margin: 1rem 0 0.25rem 5rem;
+        }
+        @media (min-width: 1440px) {
+            margin: 1rem 0 0.25rem 12rem;
+        }
     }
     .restaurants__container {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         gap: 2rem 0;
         width: 95%;
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 90%;
+        }
+        @media (min-width: 1024px) {
+            width: 85%;
+            gap: 2.5rem 0;
+        }
+        @media (min-width: 1440px) {
+            width: 75%;
+        }
         a {
             width: 100%;
+            @media (min-width: 768px) {
+                width: 46%;
+            }
             .card {
                 display: flex;
                 flex-direction: column;
                 border-radius: 1rem;
                 background-color: white;
+                @media (min-width: 768px) {
+                    position: relative;
+                }
                 &__imgcontainer {
                     display: flex;
                     justify-content: center;
@@ -154,6 +253,9 @@
                     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
                     position: absolute;
                     right: 1.5rem;
+                    @media (min-width: 768px) {
+                        right: 1rem;
+                    }
                 }
                 &__content {
                     display: flex;
@@ -186,167 +288,3 @@
 
 // Footer
 @include footer; // Footer common styles
-
-/****** Media queries ***********/
-/* Medium devices */
-@media (min-width: 768px) {
-    .explorer__section {
-        &--title {
-            font-size: 2rem;
-            margin: 2rem 0 1.5rem 0;
-        }
-        .cta {
-            margin: 0 5rem 2rem 5rem;
-        }
-    }
-
-    .fonctionnement__section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        &--title {
-            margin: 3rem 0 1.25rem 3rem;
-            align-self: flex-start;
-        }
-        .fonctionnement {
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            width: 90%;
-            margin-bottom: 3rem;
-            &__etape {
-                position: relative;
-                margin: 0;
-                font-size: 0.9rem;
-                width: 35%;
-                &--number {
-                    position: absolute;
-                    top: 50%;
-                    left: -0.75rem;
-                    transform: translateY(-50%);
-                }
-                &--txt {
-                    margin-left: 0.7rem;
-                    margin-right: 0.6rem;
-                }
-            }
-        }
-    }
-
-    .restaurants__section {
-        &--title {
-            margin: 2rem 0 0.25rem 3rem;
-        }
-        .restaurants__container {
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 90%;
-            a {
-                width: 48%;
-                .card {
-                    position: relative;
-                    .nouveau {
-                        right: 1rem;
-                    }
-                }
-            }
-        }
-    } 
-
-    .footer {
-        flex-direction: row-reverse;
-        align-items: flex-end;
-        padding: 3rem 3rem 1.8rem 0;
-        gap: 4rem;
-        &__title {
-            h1 {
-                margin: 0;
-            }
-        }
-        &__container {
-            flex-direction: row;
-            gap: 2rem;
-            &--liens { // Liens common styles
-                flex-direction: row;
-                gap: 0.7rem;
-                font-size: 0.8rem;
-            }
-        }
-    }
-}
-
-/* Laptop */
-@media (min-width: 1024px) {
-    .fonctionnement__section {
-        &--title {
-            margin: 3rem 0 1.5rem 5rem;
-        }
-        .fonctionnement {
-            width: 85%;
-            &__etape {
-                font-size: 1rem;
-                padding: 0 1.8rem 0 0;
-                &--txt {
-                    margin-left: 1rem;
-                }
-            }
-        }
-    }
-
-    .restaurants__section {
-        padding: 1rem 0rem 2rem 0rem;
-        &--title {
-            margin: 1rem 0 0.25rem 5rem;
-        }
-        .restaurants__container {
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 85%;
-            gap: 2.5rem 0;
-            a {
-                width: 47%;
-                .card {
-                    position: relative;
-                    .nouveau {
-                        right: 1rem;
-                    }
-                }
-            }
-        }
-    }
-
-    .footer {
-        &__container {
-            &--liens { // Liens common styles
-                font-size: 1rem;
-            }
-        }
-    }
-}
-
-/* Laptop */
-@media (min-width: 1440px) {
-    .fonctionnement__section {
-        &--title {
-            margin: 3rem 0 1.5rem 12rem;
-        }
-        .fonctionnement {
-            width: 75%;
-            gap: 2rem;
-        }
-    }
-
-    .restaurants__section {
-        &--title {
-            margin: 1rem 0 0.25rem 12rem;
-        }
-        .restaurants__container {
-            width: 75%;
-            a {
-                width: 46%;
-            }
-        }
-    }
-}
