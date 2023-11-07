@@ -12,6 +12,14 @@
 // Header
 @include header; // Header common styles
 
+// Styles communs
+.location,
+.explorer__section,
+.fonctionnement__section,
+.restaurants__section {
+    width: 100%;
+}
+
 // Location
 .location {
     display: flex;
@@ -66,6 +74,7 @@
 
 // Fonctionnement
 .fonctionnement__section {
+    max-width: 1440px;
     @media (min-width: 768px) {
         display: flex;
         flex-direction: column;
@@ -176,6 +185,7 @@
     gap: 1rem;
     align-items: center;
     background-color: $light-grey2;
+    max-width: 1440px;
     @media (min-width: 768px) {
         padding: 1rem 0rem 2rem 0rem;
     }

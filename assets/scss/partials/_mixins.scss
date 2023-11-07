@@ -17,16 +17,6 @@
     width: 100%;
     }
 
-    header,
-    .location,
-    .explorer__section,
-    .fonctionnement__section,
-    .restaurants__section,
-    footer {
-        width: 100%;
-        max-width: 1440px;
-    }
-
     .main-container {
         display: flex;
         flex-direction: column;
@@ -73,6 +63,7 @@
         gap: 2.5rem;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
         z-index: 1;
+        width: 100%;
         h1 { // Logo
             font-family: $font-title;
             font-size: 1.875rem;
@@ -155,6 +146,7 @@
         gap: 0.5rem;
         width: 100%;
         background-color: $grey;
+        width: 100%;
         @media (min-width: 768px) {
             flex-direction: row-reverse;
             align-items: flex-end;

@@ -39,16 +39,6 @@ body {
   width: 100%;
 }
 
-header,
-.location,
-.explorer__section,
-.fonctionnement__section,
-.restaurants__section,
-footer {
-  width: 100%;
-  max-width: 1440px;
-}
-
 .main-container {
   display: flex;
   flex-direction: column;
@@ -138,6 +128,7 @@ header {
   gap: 2.5rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   z-index: 1;
+  width: 100%;
 }
 header h1 {
   font-family: "Shrikhand";
@@ -157,21 +148,19 @@ header {
   padding: 0.8rem 5rem 0.8rem 1.2rem;
 }
 
-header,
-footer {
-  max-width: 100%;
-}
-
 img {
   width: 100%;
   height: 17rem;
-  object-fit: cover;
-  object-position: 50% 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 70%;
+     object-position: 50% 70%;
 }
 @media (min-width: 1024px) {
   img {
     height: 20rem;
-    object-position: 50% 60%;
+    -o-object-position: 50% 60%;
+       object-position: 50% 60%;
   }
 }
 
@@ -390,6 +379,7 @@ img {
   gap: 0.5rem;
   width: 100%;
   background-color: #353535;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .footer {
@@ -452,6 +442,4 @@ img {
   height: 0.8rem;
   font-size: 13px;
   margin-right: 0.7rem;
-}
-
-/*# sourceMappingURL=restaurants.css.map */
+}/*# sourceMappingURL=restaurants.css.map */
