@@ -140,6 +140,9 @@ header h1 {
 header i {
   font-size: 1.5rem;
 }
+header a {
+  color: black;
+}
 header a:visited {
   color: black;
 }
